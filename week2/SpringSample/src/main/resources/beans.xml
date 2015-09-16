@@ -29,7 +29,12 @@
 	
 	<bean name="featuredProduct2" class="com.yusuf.spring.model.Product">
 	    <constructor-arg name="name" ref="productName" />
-	    <constructor-arg name="price" value="89.99" />
+	    <constructor-arg name="price" value="99.99" />
+	</bean>
+	
+	<bean name="featuredProduct3" class="com.yusuf.spring.model.Product">
+	    <property name="name" ref="productName" />
+	    <property name="price" value="109.99" />
 	</bean>
 
 </beans>
