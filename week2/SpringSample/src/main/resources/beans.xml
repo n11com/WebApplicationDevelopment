@@ -85,4 +85,8 @@
 	
 	<bean id="prototypeCustomerService" class="com.yusuf.spring.model.CustomerService" scope="prototype" />
 	
+	<!--  callbacks -->
+	<bean id="callbacks" class="com.yusuf.spring.model.BeansWithCallbacks">
+		<property name="dummy" value="Dummy value"></property>
+	</bean>
 </beans>
