@@ -79,4 +79,10 @@
 	
 	<!--  lazy -->
 	<bean id="lazy" class="com.yusuf.spring.model.ExpensiveToCreateBean" lazy-init="true"/>
+	
+	<!--  scopes -->
+	<bean id="customerService" class="com.yusuf.spring.model.CustomerService" />
+	
+	<bean id="prototypeCustomerService" class="com.yusuf.spring.model.CustomerService" scope="prototype" />
+	
 </beans>
