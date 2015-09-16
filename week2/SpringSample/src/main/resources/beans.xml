@@ -36,5 +36,47 @@
 	    <property name="name" ref="productName" />
 	    <property name="price" value="109.99" />
 	</bean>
+	
+	<!-- inner beans -->
+	
+	<bean id="outer" class="com.yusuf.spring.model.DisplayProduct">
+		<property name="variants">
+	        <bean class="com.yusuf.spring.model.Sku">
+	            <property name="name" value="variantName"/>
+	        </bean>
+	    </property>
+	</bean>
 
+	<!-- complex object -->
+	
+	<bean id="moreComplexObject" class="com.yusuf.spring.model.ComplexObject">
+	    <property name="adminEmails">
+	        <props>
+	            <prop key="administrator">administrator@example.org</prop>
+	            <prop key="support">support@example.org</prop>
+	            <prop key="development">development@example.org</prop>
+	        </props>
+	    </property>
+	    <property name="someList">
+	        <list>
+	            <value>a list element followed by a reference</value>
+	            <ref bean="productName" />
+	        </list>
+	    </property>
+	    <property name="someMap">
+	        <map>
+	            <entry key="an entry" value="just some string"/>
+	            <entry key ="a ref" value-ref="productName"/>
+	        </map>
+	    </property>
+	    <property name="someSet">
+	        <set>
+	            <value>just some string</value>
+	            <ref bean="productName" />
+	        </set>
+	    </property>
+	</bean>
+	
+	<!--  lazy -->
+	<bean id="lazy" class="com.yusuf.spring.model.ExpensiveToCreateBean" lazy-init="true"/>
 </beans>
