@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- beanNames samples -->
+    <bean id="bean1" class="com.yusuf.spring.ExampleBean">
+    </bean>
+
+    <bean name="bean2" class="com.yusuf.spring.ExampleBean">
+    </bean>
+
+    <bean name="bean3,bean3Alias" class="com.yusuf.spring.ExampleBean">
+    </bean>
+    
+    <!-- factory method samples -->
+    <bean id="clientService" class="com.yusuf.spring.ClientService" factory-method="createInstance"/>
+
+</beans>
