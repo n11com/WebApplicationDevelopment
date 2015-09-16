@@ -1,4 +1,4 @@
-package com.yusuf.spring;
+package com.yusuf.spring.model;
 
 public class ClientService {
 	private static ClientService clientService = new ClientService();

@@ -5,16 +5,31 @@
           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- beanNames samples -->
-    <bean id="bean1" class="com.yusuf.spring.ExampleBean">
+    <bean id="bean1" class="com.yusuf.spring.model.ExampleBean">
     </bean>
 
-    <bean name="bean2" class="com.yusuf.spring.ExampleBean">
+    <bean name="bean2" class="com.yusuf.spring.model.ExampleBean">
     </bean>
 
-    <bean name="bean3,bean3Alias" class="com.yusuf.spring.ExampleBean">
+    <bean name="bean3,bean3Alias" class="com.yusuf.spring.model.ExampleBean">
     </bean>
     
     <!-- factory method samples -->
-    <bean id="clientService" class="com.yusuf.spring.ClientService" factory-method="createInstance"/>
+    <bean id="clientService" class="com.yusuf.spring.model.ClientService" factory-method="createInstance"/>
+    
+    <!-- bean dependencies -->
+    <bean name="featuredProduct" class="com.yusuf.spring.model.Product">
+	    <constructor-arg name="name" value="Keyboard"/>
+	    <constructor-arg name="price" value="89.99"/>
+	</bean>
+	
+	<bean id="productName" class="java.lang.String">
+	    <constructor-arg value="Keyboard"/>
+	</bean>
+	
+	<bean name="featuredProduct2" class="com.yusuf.spring.model.Product">
+	    <constructor-arg name="name" ref="productName" />
+	    <constructor-arg name="price" value="89.99" />
+	</bean>
 
 </beans>
