@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--  callbacks -->
+	<bean id="callbacks" class="com.yusuf.spring.model.BeansWithCallbacks">
+		<property name="dummy" value="Dummy value"></property>
+	</bean>
+	
+	<bean class="com.yusuf.spring.BeanPostProcessorExample" />
+</beans>
