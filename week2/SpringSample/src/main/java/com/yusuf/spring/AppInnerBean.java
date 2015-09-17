@@ -8,15 +8,10 @@ import com.yusuf.spring.model.DisplayProduct;
 import com.yusuf.spring.model.ExpensiveToCreateBean;
 
 public class AppInnerBean {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "beans.xml" });
 
 		DisplayProduct bean = context.getBean("outer", DisplayProduct.class);
 		System.out.println(bean);
-		
-		Thread.sleep(10000);
-		
-		context.getBean("lazy", ExpensiveToCreateBean.class);
-		
 	}
 }
