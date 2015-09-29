@@ -1,11 +1,30 @@
 package com.yusuf.junit;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 public class EmpBusinessLogicTest {
 
     EmpBusinessLogic businessLogic =new EmpBusinessLogic();
+
+    @Before
+    public void before(){
+        System.out.println("Before called");
+    }
+
+    @After
+    public void after(){
+        System.out.println("After called");
+    }
+
+    @BeforeClass
+    public static void beforeClass(){
+        System.out.println("Before class is called");
+    }
+
+    @AfterClass
+    public static void afterClass(){
+        System.out.println("After class is called");
+    }
 
     @Test
     public void shouldCalculateTotalAge() {
