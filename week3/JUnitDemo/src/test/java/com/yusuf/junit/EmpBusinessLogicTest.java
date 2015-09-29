@@ -2,6 +2,8 @@ package com.yusuf.junit;
 
 import org.junit.*;
 
+import java.io.IOException;
+
 public class EmpBusinessLogicTest {
 
     EmpBusinessLogic businessLogic =new EmpBusinessLogic();
@@ -44,6 +46,11 @@ public class EmpBusinessLogicTest {
         employee.setSalary(2000);
         double salary= businessLogic.calculateYearlySalary(employee);
         Assert.assertEquals(24000, salary, 0.0);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void shouldNotCalculateDailySalaryIfParameterIsInvalid(){
+        int result = 1/0;
     }
 
 }
