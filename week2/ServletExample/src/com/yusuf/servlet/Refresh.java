@@ -6,10 +6,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.util.*;
 
+/*
+ * It is possible to define a web servlet using @WebServlet annotation
+ * instead of declaring it in web.xml file. They have the same purpose.
+ */
 @WebServlet(value = "/refresh", name = "refresh-servlet")
 public class Refresh extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // this header tells browsers to refresh the page every 5 seconds
 		response.setIntHeader("Refresh", 5);
 
 		response.setContentType("text/html");
@@ -35,6 +40,11 @@ public class Refresh extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /*
+         * Since we call doGet method within doPost, it doesn't matter if the client uses GET or POST method.
+         * They behave the same way
+         */
+
 		doGet(request, response);
 	}
 }

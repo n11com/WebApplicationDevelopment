@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml file allows servlet container to understand the structure of the application -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+
+    <!-- This name defines the name of the application. Servlet containers may use this information in its display -->
     <display-name>ServletExample</display-name>
 
+    <!--This is how we define servlets. servlet names are used to map the paths to servlet instances-->
     <servlet>
         <servlet-name>Sample</servlet-name>
         <servlet-class>com.yusuf.servlet.ServletSample</servlet-class>
     </servlet>
-    
+
+    <!--
+    This is the mapping declaration that maps the path to servlet (using servlet's name).
+    This specific example maps /servletSample path to Sample servlet.
+
+    i.e: http://localhost:8080/{applicationContextName}/servletSample will map to this servlet.
+    -->
     <servlet-mapping>
         <servlet-name>Sample</servlet-name>
         <url-pattern>/servletSample</url-pattern>
