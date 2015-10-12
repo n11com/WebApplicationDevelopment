@@ -5,8 +5,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yusuf.spring.model.Product;
 
+/*
+ * This example show you how dependencies are injected into bean instance.
+ * Find featuredProduct, featuredProduct2 and featuredProduct3 beans in resources/beans.xml
+ */
 public class AppDependencies {
 	public static void main(String[] args) {
+        // this reads the beans.xml file and starts up Spring Application Context
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "beans.xml" });
 
 		getAndPrintBean(context, "featuredProduct");
