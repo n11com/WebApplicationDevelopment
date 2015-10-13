@@ -10,12 +10,25 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="com.yusuf.spring" />
+
+    <!--
+        mvc : annotation-driven will create additional bean instances that allows us to convert data to json.
+        as long as we have a library that can work with json in our classpath. In our example we have jackson
+        library (#see pom.xml)
+     -->
 	<mvc:annotation-driven/>
 
+    <!--
+        This is how we tell Spring to use JSP files. InternalResourceViewResolver instance automatically works
+        with JSP files.
+     -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- We define the path that holds the JSP files -->
 		<property name="prefix">
 			<value>/WEB-INF/jsp/</value>
 		</property>
+
+        <!-- We define the file suffix of the JSP files => .jsp -->
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>

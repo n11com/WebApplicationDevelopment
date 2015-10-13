@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yusuf.spring.controller.model.Pet;
 
 @RestController
+/*
+ * @RequestMapping annotations can be applied to classes as well
+ */
 @RequestMapping("/rest")
 public class SampleRestController {
-	
+
+    /*
+     * Since there is a @RequestMapping annotation in class definition, user should type rest/{name} to trigger this
+     * method
+     */
 	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
 	public Pet sayHello(@PathVariable String name) {
 		Pet pet = new Pet();

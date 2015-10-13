@@ -5,6 +5,11 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 
+    <!--
+        This servlet definition and the corresponding servlet mapping are the only required configuration in web.xml
+         Spring will look for its configuration file as WEB-INF/{servlet-name]-servlet.xml. In this example, it will
+         be example-servlet.xml
+    -->
 	<servlet>
 		<servlet-name>example</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

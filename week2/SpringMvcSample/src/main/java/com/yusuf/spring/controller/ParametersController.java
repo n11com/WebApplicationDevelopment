@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ParametersController {
 
+    /*
+     * To get the parameter values from query string and HTTP body, @RequestParam annotation can be used.
+     * By default, name of the parameter and the name of the method parameter must be the same. However you can
+     * override this by specifying a name in @RequestParam annotation
+     */
 	@RequestMapping("/params")
 	public String helloWorld(@RequestParam String param1,
 							 @RequestParam("intParam") int param2,

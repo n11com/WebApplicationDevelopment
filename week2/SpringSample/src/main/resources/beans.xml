@@ -7,6 +7,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- This tag tells sprint to use annotations for dependency injection - @Autowired -->
 	<context:annotation-config/>
 
 	<!-- beanNames samples -->

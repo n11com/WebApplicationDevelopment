@@ -7,5 +7,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--
+        This tag tells spring to search the base package for classes with @Component annotatations.
+        Bean instances for these classes will automatically be created
+     -->
 	<context:component-scan base-package="com.yusuf.spring.scan"/>
 </beans>
