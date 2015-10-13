@@ -1,16 +1,29 @@
 package com.yusuf.junit;
 
+import com.yusuf.junit.slowww.MySlowDatabaseConnector;
 import org.junit.*;
+import org.mockito.Mockito;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpBusinessLogicTest {
 
-    EmpBusinessLogic businessLogic =new EmpBusinessLogic();
+    EmpBusinessLogic businessLogic;
 
     @Before
     public void before(){
-        System.out.println("Before called");
+        businessLogic = new EmpBusinessLogic();
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add( new Employee("Yusuf", 2000, 33) );
+
+        MySlowDatabaseConnector mockConnector = Mockito.mock(MySlowDatabaseConnector.class);
+        Mockito.when( mockConnector.getEmployees() ).thenReturn( employees );
+
+//        Mockito.when( mockConnector.getEmployees() ).thenThrow(new RuntimeException("Hey!"));
+
+        businessLogic.connector = mockConnector;
     }
 
     @After
@@ -45,12 +58,36 @@ public class EmpBusinessLogicTest {
         employee.setAge(33);
         employee.setSalary(2000);
         double salary= businessLogic.calculateYearlySalary(employee);
-        Assert.assertEquals(24000, salary, 0.0);
+
+        Assert.assertEquals(24000, salary, 0.0000001);
     }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldThrowExceptionOnMyDummyMethod(){
+        businessLogic.myDummyMethod(true);
+    }
+
+    @Test
+    public void shouldNotThrowExceptionOnMyDummyMethod(){
+        businessLogic.myDummyMethod(false);
+    }
+
 
     @Test(expected = ArithmeticException.class)
     public void shouldNotCalculateDailySalaryIfParameterIsInvalid(){
         int result = 1/0;
     }
+
+    @Test
+    public void shouldWaitForEmployeesToBeFetched(){
+        List<Employee> employees = businessLogic.getEmployeesFromDatabase();
+
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+
+        System.out.println("Method call is completed");
+    }
+
 
 }
