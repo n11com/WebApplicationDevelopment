@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<!-- As you would guess, this is how you write comments in HTML -->
+<html>
+	<!-- head contains metadata. Meta data are not displayed. -->
+	<head>
+		<!-- Title defines the documents title -->
+		<title>My Awesome Title</title>
+
+		<!-- meta tags are used to define meta data for the page (search keywords, description, encoding that is used, ...) -->
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<a href="#header">Headers</a> /
+		<a href="#paragraph">Paragraphs</a> /
+		<a href="#break">Breaks</a> /
+		<a href="#pre">Preformatted Text</a> /
+		<a href="#entity">Character Entities</a> /
+		<a href="#link">Links</a> /
+		<a href="#image">Images</a> /
+		<a href="#format">Text Formatting</a> /
+		<a href="#table">Tables</a> /
+		<a href="#list">Lists</a> /
+		<a href="#div">Div &amp; Span</a> /
+		<a href="#iframe">Iframes</a> /
+		<a href="#form">Forms</a>
+
+		<br />
+
+		Look at the source codes as well to understand more!
+
+		<!-- You can use h1 - h6 tags to create headers -->
+		<h1 id="header">HEADER 1</h1>
+		<h2>HEADER 2</h2>
+		<h3>HEADER 3</h3>
+		<h4>HEADER 4</h4>
+		<h5>HEADER 5</h5>
+		<h6>HEADER 6</h6>
+
+		<!-- You can use hr tag to create horizontal lines on the page -->
+		<hr />
+
+		<!-- You can use p tag create a new paragraph -->
+		<h1 id="paragraph">Paragraphs</h1>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+		<hr />
+
+		<h1 id="break">Breaks</h1>
+
+		<p>Browsers removes the extra spaces and line breaks before displaying data to the users. If you write 10 spaces in your text, the browser will remove 9 of them. This way we can format the HTML source codes to read it easily - because it will not change the apperance of the web page. So if we really need to put a line break, we need to use &lt;br;&gt; element</p>
+
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+		<br /> 
+		It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+		<br /><br /><br />
+		It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+		<hr />
+
+		<h1 id="pre">Preformatted Text</h1>
+
+		<p>Since browsers remove the extra spaces and line breaks, we cannot display the preformatted data unless we specify them in &lt;pre&gt; tag.</p>
+
+		<pre>
+		  My Bonnie lies over the ocean.
+
+		  My Bonnie lies over the sea.
+
+		  My Bonnie lies over the ocean.
+
+		  Oh, bring back my Bonnie to me.
+		</pre>
+
+		<hr />
+
+		<h1 id="entity">Character Entities</h1>
+
+		<p>Reserved characters in HTML must be replaced with character entities.Characters, not present on your keyboard, can also be replaced by entities.</p>
+
+		<p>A character entity looks like this: &amp;entity_name; OR &amp;#entity_number;</p>
+
+		<p>If you use the less than (&lt;) or greater than (&gt;) signs in your text, the browser might mix them with tags. To display a less than sign we must write: &amp;lt; or &amp;#60; </p>
+
+		<p>Remember that browsers removes extra spaces? To add real spaces to your text, you can use the &mp;nbsp; (non-breaking space) character entity.</p>
+
+		<hr />
+
+		<h1 id="link">Links</h1>
+		<p>Use &lt;a&gt; tag to create links. Its href attribute defines the destination of the link. It is possible to open the link in another window or tab by using &lt;a&gt; tag's target attribute. You can write the name of the window or just write "_blank" to open the page in a new window.</p>
+		<a href="http://www.n11.com">Visit n11.com</a>
+		<a href="http://www.n11.com" target="_blank">Visit n11.com in another tab</a>
+
+		<p>You can use links and id attributes together to create bookmarks. Just put an id attribute to any HTML element and use the link as "#id". Look at this documents top menu for an example</p>
+
+		<hr />
+
+		<h1 id="image">Images</h1>
+		<p>You can use &lt;img&gt; tag to place an image into the page. The location of the image must written as the value of the src attribute</p>
+
+		<img src="http://cdn2.n11.com.tr/a1/org/14/09/22/73/90/63/65/13/55/53/94/38/75417294422079222061.png"></img>
+
+		<p>Not that &lt;img&gt; tag is an empty element. You don't need to write the end tag, but push "/" character to the end of the start tag</p>
+
+		<img src="http://cdn2.n11.com.tr/a1/org/14/09/22/73/90/63/65/13/55/53/94/38/75417294422079222061.png" />
+
+		<p>Some browsers may not have the capability to display images or user may close that feature if they want. Or at worse it is possible that image cannot be displayed at all. In these cases browsers uses the alt attribute of the &lt;img&gt; tag to display information about the image. Search engines uses this information to understand more about the image as well.</p>
+
+		<img src="http://www.google.com/nonExistingImage.png" alt="n11.com Logo" />
+
+		<p>You can specify the width and the height of the image using width and height attributes. The size is in pixels.</p>
+
+		<img src="http://cdn2.n11.com.tr/a1/org/14/09/22/73/90/63/65/13/55/53/94/38/75417294422079222061.png" width="400" height="20" />
+
+		<p>You can use images and links together as well</p>
+
+		<a href="http://www.n11.com"><img src="http://cdn2.n11.com.tr/a1/org/14/09/22/73/90/63/65/13/55/53/94/38/75417294422079222061.png" /></a>
+
+		<hr />
+
+		<h1 id="format">Text Formatting</h1>
+
+		<p>
+			<b>Bold</b> /
+			<strong>Strong</strong> /
+			<i>Italic</i> /
+			<small>Small</small> /
+			<mark>Marked</mark> /
+			<del>Deleted</del> /
+			<ins>Inserted</ins> /
+			<sub>Subscript</sub> /
+			<sup>Superscript</sup>
+		</p>
+
+		<p>The difference between &lt;b&gt; and &lt;strong&gt; is not visual. The latter adds semantic "strong" importance.</p>
+
+		<hr />
+
+		<h1 id="table">Tables</h1>
+
+		<p>You can use &lt;table&gt; tag to create tabular data. Border attribute allows you to define the border size of the table.</p>
+
+		<table border="1">
+			<tr>
+				<th>Top Header 1</th>
+				<th>Top Header 2</th>
+				<th>Top Header 3</th>
+			</tr>
+			<tr>
+				<td>Cell 1</td>
+				<td>Cell 2</td>
+				<td>Cell 3</td>
+			</tr>
+			<tr>
+				<td>Cell 4</td>
+				<td>Cell 5</td>
+				<td>Cell 6</td>
+			</tr>
+			<tr>
+				<td colspan="2"><small>This cell uses two column size since it has colspan attribute</small></td>
+				<td>Cell 8</td>
+			</tr>
+			<tr>
+				<td rowspan="2"><small>This cell uses two row size size it has rowspan attribute</small></td>
+				<td>Cell 10</td>
+				<td>Cell 11</td>
+			</tr>
+			<tr>
+				<td>Cell 12</td>
+				<td>Cell 13</td>
+			</tr>
+		</table>
+
+		<hr />
+
+		<h1 id="list">Lists</h1>
+
+		<p>You can create ordered and unordered lists with &lt;ol&gt; and &lt;ul&gt; tags. For every item in the list, a &lt;li&gt; tag must be used.</p>
+
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+
+		<ol>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ol>
+
+		<hr />
+
+		<h1 id="div">Div &amp; Span</h1>
+
+		<p>The &lt;div&gt; element is a block-level element that is often used as a container for other HTML elements.</p>
+
+		<div>
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+		</div>
+
+		<p>The &lt;span&gt; element is an inline element that is often used as a container for some text.</p>
+
+		My <span>text</span>
+
+		<p>&lt;div&gt; and &lt;span&gt; tags are generally used for formatting abd grouping of data.
+
+		<hr />
+
+		<h1 id="iframe">Iframes</h1>
+
+		<p>&lt;iframe&gt; tag is used to display a web page within a web page. Its src sttribute specifies the URL of the page</p>
+
+		<iframe src="http://www.bahcesehir.edu.tr" width="400" height="400" name="iframeSample"></iframe>
+
+		<p>As you can see in the example above, you can specify the width and height of the frame via width and height attributes respectively.</p>
+
+		<p>If name attribute is used, that name can be used as a target for links.</p>
+
+		<a href="http://www.w3schools.com/" target="iframeSample">Go To W3Schools</a>
+
+		<h1 id="form">Forms</h1>
+
+		<p>HTML forms are used to collect user input. The &lt;form&gt; element defines an HTML form.</p>
+
+		<p>The &lt;input&gt; element is the most important form element. The &lt;input&gt; element has many variations, depending on the type attribute: text, password, submit, radio, checkbox, button, color, date, datetime, datetime-local, email, month, number, range, search, tel, time, url, week</p>
+
+		<p>The &lt;select&gt; element defines a drop-down list. The options that will be displayed within the select is defined by &lt;option&gt; tags.</p>
+
+		<p>The &lt;textarea&gt; element defines a multi-line input field (a text area).</p>
+
+		<p>The &lt;button&gt; element defines a clickable button</p>
+
+		<p>Whenever a form is submitted, data entered by the user will be sent to the resource specified by the action attribute of the form. The resource can get the values user entered by using the name attribute's value of the input areas. method attribute of the form tells browser which HTTP method should be used while sending data to the resource.</p>
+
+		<p>The &lt;fieldset&gt; element groups related data in a form and the &lt;legend&gt; element defines a caption for the fieldset.</p>
+
+		<form action="formProcessor" method="GET">
+			<fieldset>
+				<legend>My User Form</legend>
+				<table>
+					<tr>
+						<td>UserName:</td>
+						<td><input type="text" name="username" placeholder="My Place Holder" /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" name="password" /></td>
+					</tr>
+					<tr>
+						<td>Single Choice:</td>
+						<td>
+							<input type="radio" name="choice" value="Choice 1" />Choice 1
+							<input type="radio" name="choice" value="Choice 2" />Choice 2
+							<input type="radio" name="choice" value="Choice 3" />Choice 3
+						</td>
+					</tr>
+					<tr>
+						<td>Multiple Choice:</td>
+						<td>
+							<input type="checkbox" name="multipleChoice" value="Choice 1" />Choice 1
+							<input type="checkbox" name="multipleChoice" value="Choice 2" />Choice 2
+							<input type="checkbox" name="multipleChoice" value="Choice 3" />Choice 3
+						</td>
+					</tr>
+					<tr>
+						<td>Bio:</td>
+						<td><textarea name="bio"></textarea></td>
+					</tr>
+					<tr>
+						<td>Birth Place:</td>
+						<td>
+							<select name="birthPlace">
+								<option value="Place 1">Place 1</option>
+								<option value="Place 2">Place 2</option>
+								<option value="Place 3">Place 3</option>
+								<option value="Place 4">Place 4</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="Log in" />
+							<button>Submit My Form</button>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</body>
+</html>
