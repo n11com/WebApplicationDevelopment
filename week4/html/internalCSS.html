@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Internal CSS</title>
+		<meta charset="UTF-8" />
+
+		<!-- You define the internal CSS with style tag and then write the CSS in it directly-->
+		<style>
+			/* This is a CSS comment */
+			/*
+				You define the style of the elements with CSS selector. There are three selector types in CSS:
+				- Element selector
+				- Id selector
+				- class selector
+			 */
+
+			 /* The element selector selects elements based on the element name. */
+			p {
+			    text-align: center;
+			    color: red;
+			}
+
+			/* 
+				The id selector uses the id attribute of an HTML element to select a specific element.
+				An id should be unique within a page, so the id selector is used if you want to select a single, unique element.
+				To select an element with a specific id, write a hash character, followed by the id of the element.
+			 */
+			#para1 {
+			    text-align: center;
+			    color: green;
+			}
+
+			/*
+				The class selector selects elements with a specific class attribute.
+				To select elements with a specific class, write a period character, followed by the name of the class
+			*/
+			.center {
+			    text-align: center;
+			    color: blue;
+			}
+
+			/*
+				You can also specify that only specific HTML elements should be affected by a class.
+			*/
+			p.center {
+			    text-align: center;
+			    color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<p>This text should be colored red since it is wrapped in &lt;p&gt; tag.</p>
+
+		<div id="para1">This text should be green since its id attribute is "para1"</div>
+
+		<div class="center">This text should be colored blue since its class attribute value is "center"</div>
+
+		<p class="center">This text should be black since it is wrapped in &lt;p&gt; tag and its class attribute is "center"</p>
+	</body>
+</html>

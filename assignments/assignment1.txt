@@ -1,0 +1,30 @@
+You are to create your personal web site. It should include at least 3 dynamic pages.
+
+- Your bio and resume
+- Your social media account information
+- Forms which we can populate resume and social media account information
+
+* Your bio and resume should be your index page (request mapping should be "/"). Your bio should contain your name, a photo of you and a short introduction of yourself.
+Your resume should be displayed dynamically via the form you'll provide. It should not contain any static data.
+* Your social media accounts page should not contain any static data (request mapping should be "/social"). It should be displayed dynamically via the form you'll provide.
+* Forms will be used to populate resume and social media information. You should create at least two different forms - one for resume and one for social media links. User should be able to select which part of resume they are entering the data for. All the data user provides for resume should be stored in Session and all social media information should be stored in cookies. It is expected that session data will be lost when application server is restarted, but cookie data should be stored for one month. Form data should be validated in backend code.
+
+- Spring MVC must be used
+- All HTML must be well formed! You can validate your HTML on this page: http://validator.w3.org/
+- No internal or inline CSS must be used. All CSS codes must be in external css file.
+- You cannot use HTML frames
+- You cannot use any styling elements (<strong>, <b>, ...)
+- You cannot use frontend frameworks such as Bootstrap
+- Extra points if forms are validated with Javascript as well.
+- JUnit test cases must be written
+- Provide a README file that briefly describes your work.
+- Email your project to yusuf.soysal@n11.com. It would better if you store them on GitHub/BitBucket in your personal repository.
+
+Grading:
+- HTML’s are valid and displayed as they should (10)
+- Social Media data is stored and rendered successfully (30)
+- Resume data is stored and rendered successfully (30)
+- Form data is validated (10)
+- Unit test cases are written and make sense. Code coverage percentage is important (15)
+- README is provided with enough description that tells what you did (5)
+- Javascript is written (5)

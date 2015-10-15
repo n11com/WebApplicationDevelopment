@@ -1,0 +1,132 @@
+body {
+	/* 
+		The background-color property specifies the background color of an element 
+		a color is most often specified by:
+			- a HEX value - like "#ff0000"
+			- an RGB value - like "rgb(255,0,0)"
+			- a color name - like "red"
+	*/
+    background-color: #eeeeee;
+}
+
+p.backgroundImage {
+	/* The background-image property specifies an image to use as the background of an element. By default, the image is repeated so it covers the entire element. */
+	background-image: url("https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png");
+
+	width: 400px;
+	height: 100px;
+	
+}
+
+p.textFormatting {
+	/* The color property is used to set the color of the text. */
+	color: blue;
+
+	/* The text-align property is used to set the horizontal alignment of a text. */
+	text-align: right;
+
+	/* 
+		The text-decoration property is used to set or remove decorations from text. You can use:
+		none, overline, line-through, underline
+	*/
+	text-decoration: none;
+
+	/*
+		The font family of a text is set with the font-family property. The font-family property should hold several font names as a "fallback" system. 
+		If the browser does not support the first font, it tries the next font.
+	*/
+	font-family: "Times New Roman", Times, serif;
+
+	/*
+		The font-size property sets the size of the text.
+		You can set the size with pixels or em. Setting the text size with pixels gives you full control over the text size.
+		To allow users to resize the text (in the browser menu), many developers use em instead of pixels. 1em is equal to the current font size. 
+		The default text size in browsers is 16px. So, the default size of 1em is 16px.
+	*/
+	font-size: 14px;
+}
+
+/* Links can be styled with any CSS property (e.g. color, font-family, background, etc.).*/
+a {
+	color: #FF0000;
+}
+
+/*
+In addition, links can be styled differently depending on what state they are in.
+
+The four links states are:
+a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - a link the moment it is clicked
+*/
+
+/* visited link */
+a:visited {
+    color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+}
+
+/* The type of list item marker is specified with the list-style-type property: */
+ul.a {
+    list-style-type: circle;
+}
+
+ul.b {
+    list-style-type: square;
+}
+
+ol.c {
+    list-style-type: upper-roman;
+}
+
+ol.d {
+    list-style-type: lower-alpha;
+}
+
+
+/* margin, padding and border */
+div.boxModel {
+    width: 300px;
+
+    /* Clears an area around the content. The padding is transparent */
+    padding: 25px;
+
+    /* A border that goes around the padding and content */
+    border: 25px solid navy;
+
+    /* Clears an area outside the border. The margin is transparent */
+    margin: 25px;
+}
+
+p.borders {
+	/*
+		The border-style property specifies what kind of border to display.
+		Possible values: none, dotted, dashed, solid, double, groove, ridge, inset, outset
+	*/
+	border-style: dotted;
+
+	/* The border-width property is used to set the width of the border. */
+	border-width: 5px;
+
+	/* The border-color property is used to set the color of the border. */
+	border-color: red;
+
+	/* In CSS it is possible to specify different borders for different sides: */
+
+	border-top-style: ridge;
+    border-right-style: solid;
+    border-bottom-style: dashed;
+
+    /* To shorten the code, it is also possible to specify all the individual border properties in one property. This is called a shorthand property. */
+    /* border: 5px solid red; */
+}
