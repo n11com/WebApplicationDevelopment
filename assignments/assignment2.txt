@@ -1,0 +1,30 @@
+You are to create a simple library catalog. User should be able to add books and list them all. It should include 2 pages.
+
+- A form that will add a new book
+- A page that will display all books stored in library database
+
+* User should be able to enter these data into the form:
+- Book Name
+- Author (Assume that there is only one author per book)
+- ISBN
+- Price (in TL)
+* Form should insert the book data into a database. Form data should be validated in backend code. Any database implementation can be used (any RDBMS or NoSQL databases)
+* The list of books should fetch the data from the database and list them. After fetching the data, it must be cached by using the @Cachable annotation. Duration of the cache (TTL - Time To Live) should be 10 minutes.
+* Extra points if you can invalidate the cache when a new book is added
+
+- Spring MVC must be used
+- All HTML must be well formed! You can validate your HTML on this page: http://validator.w3.org/
+- It is up to you to use CSS or Javascript. If you do, there is no restrictions on them (that means you can use Bootstrap).
+- JUnit test cases must be written
+- Provide a README file that briefly describes your work.
+- Email your project to yusuf.soysal@n11.com. It would better if you store them on GitHub/BitBucket in your personal repository.
+
+Grading:
+- HTML’s are valid and displayed as they should (10)
+- Data is inserted to the database (20)
+- Data is fetched from the database (20)
+- Data is cached for 10 minutes (20)
+- Cache is evicted when a new book is added (10)
+- Form data is validated (10)
+- Unit test cases are written and make sense. Code coverage percentage is important (15)
+- README is provided with enough description that tells what you did (5)
