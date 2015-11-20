@@ -1,0 +1,47 @@
+Sample Projects
+
+#1 - Online Movie Critics
+Sample template: http://www.templatemonster.com/demo/51822.html
+- Users should be able to sign up to the site
+- Users should be able to login and write new movie critics. At least one movie photo/poster/etc. should be uploaded by the user
+- When users submits new critics, application should protect itself against from basic CSRF and Injection attacks
+-  Web site should list all movie critics publicly, any visitor can see the critics without logging in.
+- Web site should contain movie category lists and movies list should be filtered out by these categories
+- Application should contain one api that returns the list of movies
+
+#2 - Online Flower Shop
+Sample template: http://www.templatemonster.com/demo/55697.html
+- Admin user should be able to login and add new flowers. At least one photo should be uploaded by the user
+- When admin submits new flowers, application should protect itself against from basic CSRF and Injection attacks
+- Web site should list all flowers, any visitor can see them without logging in.
+- Web site should contain flower category lists and flowers should be filtered out by these categories
+- Users should be able to add flowers to their shopping basket. Don't forget that a user can add the same flower to the basket again. When user add flowers to their basket, application should protect itself against from basic CSRF and Injection attacks . User should be able to see their basket.
+- Application should contain one api that returns the list of flowers
+
+#3 - Formula 1 News
+Sample template: http://www.templatemonster.com/demo/39892.html
+- Admin user should be able to login and add/edit teams and drivers. At least one photo of the driver should be uploaded by the user
+- Admin user should be able to add race results to the system. 
+- When admin submits team/driver info and race results, application should protect itself against from basic CSRF and Injection attacks
+- Web site should list all teams and drivers publicly, any visitor can see them without logging in.
+- Web site should list team and driver rankings publicly, any visitor can see them without logging in.
+- Application should contain one api that returns the list of teams/drivers and rankings
+
+#4 - Book Shop
+Sample template: http://www.templatemonster.com/demo/55360.html
+- Admin user should be able to login and add new books. At least one photo should be uploaded by the user
+- When admin submits new books, application should protect itself against from basic CSRF and Injection attacks
+- Web site should list all books, any visitor can see them without logging in.
+- Web site should contain book category lists and books should be filtered out by these categories
+- Users should be able to add books to their shopping basket. Don't forget that a user can add the same book to the basket again. When user add books to their basket, application should protect itself against from basic CSRF and Injection attacks. User should be able to see their basket.
+- Application should contain one api that returns the list of books
+
+#5 - Online Retail Estate Site
+Sample template: http://themeforest.net/item/dreamvilla-single-property-real-estate-wordpress-theme/full_screen_preview/12608598
+- Users should be able to sign up to the site
+- Users should be able to login and add new property (apartment/house). At least one photo should be uploaded by the user
+- When users submits new property listing, application should protect itself against from basic CSRF and Injection attacks
+- Web site should list all properties publicly, any visitor can see them without logging in.
+- Web site should provide ways to filter property listings
+- Web site should provide a map to the property. Google Maps API may be used for this.
+- Application should contain one api that returns the list of properties
