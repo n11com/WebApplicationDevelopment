@@ -27,7 +27,7 @@ public class AuthenticationFilter implements Filter {
         if( resourceIsSafeToServe ){
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            response.sendRedirect(request.getContextPath() + request.getServletPath() + "/");
+            response.sendRedirect("/");
         }
     }
 
@@ -43,7 +43,7 @@ public class AuthenticationFilter implements Filter {
     }
 
     private String getPathInfo(HttpServletRequest request) {
-        String pathInfo = request.getPathInfo();
+        String pathInfo = request.getServletPath();
         if( pathInfo == null ){
             pathInfo = "";
         }

@@ -1,6 +1,13 @@
 package com.bau.blog;
 
+import com.bau.blog.dao.EntryDao;
+import com.bau.blog.model.Entry;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,6 +18,26 @@ public class MainControllerTest {
 
     @Test
     public void shouldReturnIndexPage() {
-        assertThat(controller.index(), equalTo("index"));
+        EntryDao mock = Mockito.mock(EntryDao.class);
+        controller.setEntryDao(mock);
+
+        ModelAndView mav = controller.index();
+        assertThat(mav.getViewName(), equalTo("index"));
+    }
+
+    @Test
+    public void shouldIndexPageContainBlogEntries() {
+        List<Entry> entryList = new ArrayList<>();
+        entryList.add(new Entry());
+
+        EntryDao mock = Mockito.mock(EntryDao.class);
+        controller.setEntryDao(mock);
+
+        Mockito.when(mock.getEntries()).thenReturn(entryList);
+
+        ModelAndView mav = controller.index();
+        Object entries = mav.getModel().get("entries");
+
+        assertThat(entries, equalTo(entryList));
     }
 }

@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>iDea | Blog</title>
-    <link href="resources/css/webfonts.css" rel="stylesheet" type="text/css">
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
-    <link href="resources/css/font-awesome.css" rel="stylesheet">
-    <link href="resources/css/fontello.css" rel="stylesheet">
-    <link href="resources/css/magnific-popup.css" rel="stylesheet">
-    <link href="resources/css/animations.css" rel="stylesheet">
-    <link href="resources/css/owl.carousel.css" rel="stylesheet">
-    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/webfonts.css" />" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/font-awesome.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/fontello.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/magnific-popup.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/animations.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/owl.carousel.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body class="wide">
 <div class="scrollToTop" style="display: none;"><i class="icon-up-open-big"></i></div>
@@ -58,12 +58,25 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="" style="">
-                                            <a href="<c:url value="/uyeol" />">Sign Up</a>
-                                        </li>
-                                        <li class="active" style="">
-                                            <a href="<c:url value="/girisyap" />">Sign In</a>
-                                        </li>
+                                        <c:if test="${sessionScope.user != null}">
+                                            <li>
+                                                <span>Welcome ${sessionScope.user.firstName} ${sessionScope.user.lastName}</span>
+                                            </li>
+                                            <li>
+                                                <a href="<c:url value="/secure/addBlogPost" />">Add Blog Post</a>
+                                            </li>
+                                            <li>
+                                                <a href="<c:url value="/cikis" />">Logout</a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.user == null}">
+                                            <li>
+                                                <a href="<c:url value="/uyeol" />">Sign Up</a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="<c:url value="/girisyap" />">Sign In</a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                             </div>
@@ -82,36 +95,27 @@
         <div class="row">
             <!-- main start -->
             <!-- ================ -->
-            <div class="main object-non-visible animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="300">
-                <div class="form-block center-block">
-                    <h2 class="title">Login</h2>
-                    <hr>
-                    <form action="<c:url value="/girisyap" />" method="post" class="form-horizontal">
-                        <div class="form-group has-feedback">
-                            <label for="inputUserName" class="col-sm-3 control-label">User Name</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputUserName" name="username" placeholder="User Name" required="">
-                                <i class="fa fa-user form-control-feedback"></i>
-                            </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="inputPassword" class="col-sm-3 control-label">Password</label>
-                            <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required="">
-                                <i class="fa fa-lock form-control-feedback"></i>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-8">
-                                <button type="submit" class="btn btn-group btn-default btn-sm">Log In</button>
-                                <ul>
-                                    <li><a href="http://htmlcoder.me/preview/idea/v.1.3/html/page-login.html#">Forgot your password?</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <p class="text-center space-top">Don't have an account yet? <a href="<c:url value="/uyeol" />">Sign up</a> now.</p>
+            <div class="main col-md-8">
+                <!-- Forms start -->
+                <!-- ============================================================================== -->
+                <h2>Add Blog Entry</h2>
+                <form role="form" action="<c:url value="addBlogPost" />" method="post">
+                    <div class="form-group">
+                        <label for="blogTitle">Blog Title</label>
+                        <input type="text" class="form-control" id="blogTitle" name="title" placeholder="Blog Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry">Entry</label>
+                        <textarea class="form-control" rows="3" id="entry" name="entry" placeholder="Blog Entry"></textarea>
+                    </div>
+                    <!-- div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div -->
+                    <button type="submit" class="btn btn-default">Add Entry</button>
+                </form>
+
             </div>
             <!-- main end -->
         </div>

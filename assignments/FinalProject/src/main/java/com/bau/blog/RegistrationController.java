@@ -1,7 +1,7 @@
 package com.bau.blog;
 
-import com.bau.blog.dao.UserDao;
 import com.bau.blog.model.User;
+import com.bau.blog.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class RegistrationController {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @RequestMapping("/uyeol")
     public String index(){
@@ -28,12 +28,10 @@ public class RegistrationController {
                                    @RequestParam("username") String username,
                                    @RequestParam("email") String email,
                                    @RequestParam("password") String password){
-        ModelAndView mav = null;
+        ModelAndView mav;
+        boolean isUserSaved = false;
 
-        if( isForDataInvalid(firstName, lastName, username, email, password)){
-            mav = new ModelAndView(new RedirectView("/uyeol"));
-            mav.addObject("error", true);
-        } else {
+        if( isDataValid(firstName, lastName, username, email, password)){
             User user = new User();
             user.setFirstName(firstName);
             user.setLastName(lastName);
@@ -41,19 +39,24 @@ public class RegistrationController {
             user.setUsername(username);
             user.setPassword(password);
 
-            userDao.addUser(user);
+            isUserSaved = userService.saveUser(user);
+        }
 
+        if( isUserSaved ){
             mav = new ModelAndView(new RedirectView("/"));
+        } else {
+            mav = new ModelAndView(new RedirectView("/uyeol"));
+            mav.addObject("error", true);
         }
 
         return mav;
     }
 
-    private boolean isForDataInvalid(String firstName, String lastName, String username, String email, String password) {
-        return StringUtils.isAnyBlank(firstName, lastName, username, email, password);
+    private boolean isDataValid(String firstName, String lastName, String username, String email, String password) {
+        return StringUtils.isNoneBlank(firstName, lastName, username, email, password);
     }
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

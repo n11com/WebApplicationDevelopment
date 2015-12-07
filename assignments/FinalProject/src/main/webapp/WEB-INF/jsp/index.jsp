@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en" class=" js no-touch csstransitions">
 <head>
@@ -63,6 +65,9 @@
                                                 <span>Welcome ${sessionScope.user.firstName} ${sessionScope.user.lastName}</span>
                                             </li>
                                             <li>
+                                                <a href="<c:url value="/secure/addBlogPost" />">Add Blog Post</a>
+                                            </li>
+                                            <li>
                                                 <a href="<c:url value="/cikis" />">Logout</a>
                                             </li>
                                         </c:if>
@@ -101,139 +106,46 @@
                 <!-- page-title end -->
                 <!-- masonry grid start -->
                 <div class="masonry-grid row" style="position: relative; height: 2641.16px;">
-                    <!-- masonry grid item start -->
-                    <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 0px; top: 0px;">
-                        <!-- blogpost start -->
-                        <article class="clearfix blogpost">
-                            <div class="overlay-container">
-                                <img src="./iDea _ Blog_files/blog-1.jpg" alt="">
-                                <div class="overlay">
-                                    <div class="overlay-links">
-                                        <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><i class="fa fa-link"></i></a>
-                                        <a href="./iDea _ Blog_files/blog-1.jpg" class="popup-img-single hoverZoomLink" title="image title"><i class="fa fa-search-plus"></i></a>
+
+                    <c:forEach items="${entries}" var="entry">
+                        <!-- masonry grid item start -->
+                        <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 0px; top: 0px;">
+                            <!-- blogpost start -->
+                            <article class="clearfix blogpost">
+                                <div class="overlay-container">
+                                    <img src="./iDea _ Blog_files/blog-1.jpg" alt="">
+                                    <div class="overlay">
+                                        <div class="overlay-links">
+                                            <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><i class="fa fa-link"></i></a>
+                                            <a href="./iDea _ Blog_files/blog-1.jpg" class="popup-img-single hoverZoomLink" title="image title"><i class="fa fa-search-plus"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="blogpost-body">
-                                <div class="post-info">
-                                    <span class="day">12</span>
-                                    <span class="month">Sept 2014</span>
-                                </div>
-                                <div class="blogpost-content">
-                                    <header>
-                                        <h2 class="title"><a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html">Blogpost with image</a></h2>
-                                        <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">John Doe</a></div>
-                                    </header>
-                                    <p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-                                </div>
-                            </div>
-                            <footer class="clearfix">
-                                <ul class="links pull-left">
-                                    <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
-                                    <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
-                                </ul>
-                                <a class="pull-right link" href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><span>Read more</span></a>
-                            </footer>
-                        </article>
-                        <!-- blogpost end -->
-                    </div>
-                    <!-- masonry grid item end -->
-                    <!-- masonry grid item start -->
-                    <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 390px; top: 0px;">
-                        <!-- blogpost start -->
-                        <article class="clearfix blogpost">
-                            <div class="audio-wrapper">
-                                <img src="./iDea _ Blog_files/blog-1.jpg" alt="">
-                            </div>
-                            <div class="blogpost-body">
-                                <div class="post-info">
-                                    <span class="day">11</span>
-                                    <span class="month">Sept 2014</span>
-                                </div>
-                                <div class="blogpost-content">
-                                    <header>
-                                        <h2 class="title"><a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html">Audio post</a></h2>
-                                        <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">John Doe</a></div>
-                                    </header>
-                                    <p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-                                </div>
-                            </div>
-                            <footer class="clearfix">
-                                <ul class="links pull-left">
-                                    <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
-                                    <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
-                                </ul>
-                                <a class="pull-right link" href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><span>Read more</span></a>
-                            </footer>
-                        </article>
-                        <!-- blogpost end -->
-                    </div>
-                    <!-- masonry grid item end -->
-                    <!-- masonry grid item start -->
-                    <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 390px; top: 568px;">
-                        <!-- blogpost start -->
-                        <article class="clearfix blogpost">
-                            <div class="overlay-container">
-                                <img src="./iDea _ Blog_files/blog-2.jpg" alt="">
-                                <div class="overlay">
-                                    <div class="overlay-links">
-                                        <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><i class="fa fa-link"></i></a>
-                                        <a href="./iDea _ Blog_files/blog-2.jpg" class="popup-img-single hoverZoomLink" title="image title"><i class="fa fa-search-plus"></i></a>
+                                <div class="blogpost-body">
+                                    <div class="post-info">
+                                        <span class="day"><fmt:formatDate pattern="dd" value="${entry.createDate}" /></span>
+                                        <span class="month"><fmt:formatDate pattern="MMM yyyy" value="${entry.createDate}" /></span>
+                                    </div>
+                                    <div class="blogpost-content">
+                                        <header>
+                                            <h2 class="title"><a href="#">${entry.title}</a></h2>
+                                            <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">${entry.author.firstName} ${entry.author.lastName}</a></div>
+                                        </header>
+                                        <p>${fn:substring(entry.entry, 0, 100)}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="blogpost-body">
-                                <div class="post-info">
-                                    <span class="day">10</span>
-                                    <span class="month">Sept 2014</span>
-                                </div>
-                                <div class="blogpost-content">
-                                    <header>
-                                        <h2 class="title"><a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html">Autumn Colors</a></h2>
-                                        <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">John Doe</a></div>
-                                    </header>
-                                    <p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-                                </div>
-                            </div>
-                            <footer class="clearfix">
-                                <ul class="links pull-left">
-                                    <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
-                                    <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
-                                </ul>
-                                <a class="pull-right link" href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><span>Read more</span></a>
-                            </footer>
-                        </article>
-                        <!-- blogpost end -->
-                    </div>
-                    <!-- masonry grid item end -->
-                    <!-- masonry grid item start -->
-                    <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 0px; top: 598px;">
-                        <!-- blogpost start -->
-                        <article class="clearfix blogpost">
-                            <div class="blogpost-body">
-                                <div class="post-info">
-                                    <span class="day">08</span>
-                                    <span class="month">Aug 2014</span>
-                                </div>
-                                <div class="blogpost-content">
-                                    <header>
-                                        <h2 class="title"><a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html">Text post</a></h2>
-                                        <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">John Doe</a></div>
-                                    </header>
-                                    <p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-                                </div>
-                            </div>
-                            <footer class="clearfix">
-                                <ul class="links pull-left">
-                                    <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
-                                    <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
-                                </ul>
-                                <a class="pull-right link" href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><span>Read more</span></a>
-                            </footer>
-                        </article>
-                        <!-- blogpost end -->
-                    </div>
-                    <!-- masonry grid item end -->
+                                <footer class="clearfix">
+                                    <ul class="links pull-left">
+                                        <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
+                                        <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
+                                    </ul>
+                                    <a class="pull-right link" href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><span>Read more</span></a>
+                                </footer>
+                            </article>
+                            <!-- blogpost end -->
+                        </div>
+                        <!-- masonry grid item end -->
+                    </c:forEach>
                 </div>
                 <!-- masonry grid end -->
             </div>

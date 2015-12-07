@@ -1,7 +1,7 @@
 package com.bau.blog;
 
-import com.bau.blog.dao.UserDao;
 import com.bau.blog.model.User;
+import com.bau.blog.service.UserService;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +12,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.eq;
 
 public class RegistrationControllerTest {
 
@@ -20,12 +19,12 @@ public class RegistrationControllerTest {
 
     @Test
     public void shouldOpenSignupPage() {
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         assertThat(controller.index(), equalTo("register"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
     @Test
@@ -36,15 +35,17 @@ public class RegistrationControllerTest {
         String password = "password";
         String email = "email";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
+
+        Mockito.when(userService.saveUser(Mockito.any(User.class))).thenReturn(true);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertThat(model.get("error"), nullValue());
 
-        Mockito.verify(userDao).addUser(Mockito.any(User.class));
+        Mockito.verify(userService).saveUser(Mockito.any(User.class));
     }
 
     @Test
@@ -55,15 +56,15 @@ public class RegistrationControllerTest {
         String password = "password";
         String email = "email";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertTrue((Boolean) model.get("error"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
     @Test
@@ -74,15 +75,15 @@ public class RegistrationControllerTest {
         String password = "password";
         String email = "email";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertTrue((Boolean) model.get("error"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
     @Test
@@ -93,15 +94,15 @@ public class RegistrationControllerTest {
         String password = "password";
         String email = "email";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertTrue((Boolean) model.get("error"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
     @Test
@@ -112,15 +113,15 @@ public class RegistrationControllerTest {
         String password = "";
         String email = "email";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertTrue((Boolean) model.get("error"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
     @Test
@@ -131,15 +132,15 @@ public class RegistrationControllerTest {
         String password = "password";
         String email = "";
 
-        UserDao userDao = Mockito.mock(UserDao.class);
-        controller.setUserDao(userDao);
+        UserService userService = Mockito.mock(UserService.class);
+        controller.setUserService(userService);
 
         ModelAndView mav = controller.doRegister(firstName, lastName, username, email, password);
 
         Map<String, Object> model = mav.getModel();
         assertTrue((Boolean) model.get("error"));
 
-        Mockito.verifyZeroInteractions(userDao);
+        Mockito.verifyZeroInteractions(userService);
     }
 
 }

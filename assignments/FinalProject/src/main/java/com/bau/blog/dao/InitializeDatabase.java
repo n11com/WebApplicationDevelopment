@@ -29,6 +29,16 @@ public class InitializeDatabase {
                 "  register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP())";
 
         this.jdbcTemplate.execute(sql);
+
+        sql = "CREATE TABLE IF NOT EXISTS entries (" +
+                "  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY," +
+                "  title VARCHAR(200) DEFAULT NULL," +
+                "  entry VARCHAR(5000) DEFAULT NULL," +
+                "  create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP(), " +
+                "  author INT," +
+                "  image_path VARCHAR(200) DEFAULT NULL)";
+
+        this.jdbcTemplate.execute(sql);
     }
 
 

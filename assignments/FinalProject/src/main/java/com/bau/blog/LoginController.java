@@ -2,6 +2,7 @@ package com.bau.blog;
 
 import com.bau.blog.dao.UserDao;
 import com.bau.blog.model.User;
+import com.bau.blog.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @RequestMapping("/girisyap")
     public String index(){
@@ -31,15 +32,15 @@ public class LoginController {
         ModelAndView mav = null;
 
         if( isForDataValid(username, password) ){
-            User user = userDao.getUser(username);
-            if( user.getPassword().equals(password) ){
-                mav = new ModelAndView(new RedirectView("/"));
+            User user = userService.getUserWithUsername(username);
+            if( user != null && user.getPassword().equals( EncryptionUtils.encrypt(password) ) ){
+                mav = new ModelAndView(new RedirectView("/", true));
                 session.setAttribute("user", user);
             }
         }
 
         if( mav == null ) {
-            mav = new ModelAndView(new RedirectView("/girisyap"));
+            mav = new ModelAndView(new RedirectView("/girisyap", true));
             mav.addObject("error", true);
         }
 
@@ -50,10 +51,14 @@ public class LoginController {
     public ModelAndView logoutUser(HttpSession session){
         session.removeAttribute("user");
 
-        return new ModelAndView(new RedirectView("/"));
+        return new ModelAndView(new RedirectView("/", true));
     }
 
     private boolean isForDataValid(String username, String password) {
         return StringUtils.isNoneBlank(username, password);
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

@@ -89,7 +89,7 @@
                     <c:if test="${param.error}">
                         <span>Please fill all fields</span>
                     </c:if>
-                    <form action="uyeol" method="post" class="form-horizontal" role="form">
+                    <form action="<c:url value="/uyeol" />" method="post" class="form-horizontal" role="form">
                         <div class="form-group has-feedback">
                             <label for="inputName" class="col-sm-3 control-label">First Name <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">

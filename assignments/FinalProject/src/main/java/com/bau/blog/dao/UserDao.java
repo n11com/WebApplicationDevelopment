@@ -1,5 +1,6 @@
 package com.bau.blog.dao;
 
+import com.bau.blog.EncryptionUtils;
 import com.bau.blog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -28,30 +29,16 @@ public class UserDao {
     }
 
     public User getUser(String username){
-        String sql = "SELECT firstname, lastname, username, email, password FROM users WHERE username = ?";
+        String sql = "SELECT id, firstname, lastname, username, email, password FROM users WHERE username = ?";
 
-        return jdbcTemplate.<User>queryForObject(sql, new BeanPropertyRowMapper(User.class), username);
+        List<User> userList = jdbcTemplate.<User>query(sql, new BeanPropertyRowMapper(User.class), username);
+
+        if( userList.size() > 0 ){
+            return userList.get(0);
+        }
+
+        return null;
     }
-
-    public List<User> getAllUsers(){
-        String sql = "SELECT * FROM users";
-
-        return jdbcTemplate.query(sql, new RowMapper<User>() {
-            @Override
-            public User mapRow(ResultSet rs, int rowNumber) throws SQLException {
-                User user = new User();
-                user.setEmail(rs.getString("email"));
-                user.setFirstName(rs.getString("firstName"));
-                user.setLastName(rs.getString("lastName"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-
-                return user;
-            }
-        });
-    }
-
-
 
     @Autowired
     public void setDataSource(DataSource dataSource){
