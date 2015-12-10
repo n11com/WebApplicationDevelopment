@@ -43,9 +43,9 @@ public class RegistrationController {
         }
 
         if( isUserSaved ){
-            mav = new ModelAndView(new RedirectView("/"));
+            mav = new ModelAndView(new RedirectView("/", true));
         } else {
-            mav = new ModelAndView(new RedirectView("/uyeol"));
+            mav = new ModelAndView(new RedirectView("/uyeol", true));
             mav.addObject("error", true);
         }
 

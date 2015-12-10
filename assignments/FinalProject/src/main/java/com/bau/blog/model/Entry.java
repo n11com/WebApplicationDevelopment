@@ -8,6 +8,7 @@ public class Entry {
     private String entry;
     private Date createDate;
     private User author;
+    private String imagePath;
 
     public int getId() {
         return id;
@@ -47,5 +48,13 @@ public class Entry {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

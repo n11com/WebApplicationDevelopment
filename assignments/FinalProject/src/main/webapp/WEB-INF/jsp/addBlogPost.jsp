@@ -26,7 +26,7 @@
                 <div class="header-left clearfix">
                     <!-- logo -->
                     <div class="logo">
-                        <a href="<c:url value="/" />"><img id="logo" src="resources/img/logo_red.png" alt="iDea"></a>
+                        <a href="<c:url value="/" />"><img id="logo" src="<c:url value="/resources/img/logo_red.png" />" alt="iDea"></a>
                     </div>
                     <!-- name-and-slogan -->
                     <div class="site-slogan">
@@ -99,7 +99,7 @@
                 <!-- Forms start -->
                 <!-- ============================================================================== -->
                 <h2>Add Blog Entry</h2>
-                <form role="form" action="<c:url value="addBlogPost" />" method="post">
+                <form role="form" action="<c:url value="addBlogPost" />" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="blogTitle">Blog Title</label>
                         <input type="text" class="form-control" id="blogTitle" name="title" placeholder="Blog Title">
@@ -108,11 +108,11 @@
                         <label for="entry">Entry</label>
                         <textarea class="form-control" rows="3" id="entry" name="entry" placeholder="Blog Entry"></textarea>
                     </div>
-                    <!-- div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div -->
+                    <div class="form-group">
+                        <label for="image">Blog Image</label>
+                        <input type="file" name="image" id="image">
+                    </div>
+                    <input type="hidden" name="csrfToken" value="${csrfToken}" />
                     <button type="submit" class="btn btn-default">Add Entry</button>
                 </form>
 
@@ -127,31 +127,31 @@
 <!-- JavaScript files placed at the end of the document so the pages load faster
    ================================================== -->
 <!-- Jquery and Bootstap core js files -->
-<script type="text/javascript" src="resources/js/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <!-- Modernizr javascript -->
-<script type="text/javascript" src="resources/js/modernizr.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/modernizr.js" />"></script>
 <!-- Isotope javascript -->
-<script type="text/javascript" src="resources/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/isotope.pkgd.min.js" />"></script>
 <!-- Owl carousel javascript -->
-<script type="text/javascript" src="resources/js/owl.carousel.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/owl.carousel.js" />"></script>
 <!-- Magnific Popup javascript -->
-<script type="text/javascript" src="resources/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.magnific-popup.min.js" />"></script>
 <!-- Appear javascript -->
-<script type="text/javascript" src="resources/js/jquery.appear.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.appear.js" />"></script>
 <!-- Count To javascript -->
-<script type="text/javascript" src="resources/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.countTo.js" />"></script>
 <!-- Parallax javascript -->
-<script src="resources/js/jquery.parallax-1.1.3.js"></script>
+<script src="<c:url value="/resources/js/jquery.parallax-1.1.3.js" />"></script>
 <!-- Contact form -->
-<script src="resources/js/jquery.validate.js"></script>
+<script src="<c:url value="/resources/js/jquery.validate.js" />"></script>
 <!-- SmoothScroll javascript -->
-<script type="text/javascript" src="resources/js/jquery.browser.js"></script>
-<script type="text/javascript" src="resources/js/SmoothScroll.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.browser.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/SmoothScroll.js" />"></script>
 <!-- Initialization of Plugins -->
-<script type="text/javascript" src="resources/js/template.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/template.js" />"></script>
 <!-- Custom Scripts -->
-<script type="text/javascript" src="resources/js/custom.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/custom.js" />"></script>
 
 </body>
 </html>

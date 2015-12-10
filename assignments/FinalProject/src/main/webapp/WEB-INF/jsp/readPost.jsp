@@ -98,100 +98,120 @@
             <!-- main start -->
             <!-- ================ -->
             <div class="main col-md-8">
+
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h1 class="page-title">Blog Masonry Layout</h1>
-                <div class="separator-2"></div>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas nulla suscipit <br class="hidden-sm hidden-xs"> unde rerum mollitia dolorum.</p>
+                <h1 class="page-title">${entry.title}</h1>
                 <!-- page-title end -->
-                <!-- masonry grid start -->
-                <div class="masonry-grid row" style="position: relative; height: 2641.16px;">
 
-                    <c:forEach items="${entries}" var="entry">
-                        <!-- masonry grid item start -->
-                        <div class="masonry-grid-item col-sm-6" style="position: absolute; left: 0px; top: 0px;">
-                            <!-- blogpost start -->
-                            <article class="clearfix blogpost">
-                                <div class="overlay-container">
-                                    <img src="<c:url value="${entry.imagePath}" />" alt="">
-                                    <div class="overlay">
-                                        <div class="overlay-links">
-                                            <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><i class="fa fa-link"></i></a>
-                                            <a href="<c:url value="${entry.imagePath}" />" class="popup-img-single hoverZoomLink" title="image title"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blogpost-body">
-                                    <div class="post-info">
-                                        <span class="day"><fmt:formatDate pattern="dd" value="${entry.createDate}" /></span>
-                                        <span class="month"><fmt:formatDate pattern="MMM yyyy" value="${entry.createDate}" /></span>
-                                    </div>
-                                    <div class="blogpost-content">
-                                        <header>
-                                            <h2 class="title"><a href="#">${entry.title}</a></h2>
-                                            <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">${entry.author.firstName} ${entry.author.lastName}</a></div>
-                                        </header>
-                                        <p>${fn:substring(entry.entry, 0, 100)}</p>
-                                    </div>
-                                </div>
-                                <footer class="clearfix">
-                                    <ul class="links pull-left">
-                                        <li><i class="fa fa-comment-o pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">22 comments</a> |</li>
-                                        <li><i class="fa fa-tags pr-5"></i> <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">tag 1</a></li>
-                                    </ul>
-                                    <a class="pull-right link" href="<c:url value="/readPost?id=${entry.id}" />"><span>Read more</span></a>
-                                </footer>
-                            </article>
-                            <!-- blogpost end -->
+                <!-- blogpost start -->
+                <article class="clearfix blogpost full">
+                    <div class="blogpost-body">
+                        <div class="side">
+                            <div class="post-info">
+                                <span class="day"><fmt:formatDate pattern="dd" value="${entry.createDate}" /></span>
+                                <span class="month"><fmt:formatDate pattern="MMM yyyy" value="${entry.createDate}" /></span>
+                            </div>
                         </div>
-                        <!-- masonry grid item end -->
-                    </c:forEach>
-                </div>
-                <!-- masonry grid end -->
-            </div>
-            <!-- main end -->
-            <!-- sidebar start -->
-            <aside class="col-md-3 col-md-offset-1">
-                <div class="sidebar">
-                    <div class="block clearfix">
-                        <h3 class="title">Tags</h3>
-                        <div class="separator"></div>
-                        <div class="tags-cloud">
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">energy</a>
+                        <div class="blogpost-content">
+                            <header>
+                                <div class="submitted"><i class="fa fa-user pr-5"></i> by ${entry.author.firstName} ${entry.author.lastName}</div>
+                            </header>
+                            <img src="<c:url value="${entry.imagePath}" />" alt="">
+                            <p>${entry.entry}</p>
+                        </div>
+                    </div>
+                    <footer class="clearfix">
+                        <ul class="links pull-left">
+                            <li><i class="fa fa-comment-o pr-5"></i> <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">22 comments</a> |</li>
+                            <li><i class="fa fa-tags pr-5"></i> <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">tag 1</a>, <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">tag 2</a>, <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">long tag 3</a> </li>
+                        </ul>
+                    </footer>
+                </article>
+                <!-- blogpost end -->
+
+                <!-- comments start -->
+                <div class="comments">
+                    <h2 class="title">There are 3 comments</h2>
+
+                    <!-- comment start -->
+                    <div class="comment clearfix">
+                        <div class="comment-avatar">
+                            <img src="./iDea _ Blogpost_files/avatar.jpg" alt="avatar">
+                        </div>
+                        <div class="comment-content">
+                            <h3>Comment title</h3>
+                            <div class="comment-meta">By <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">admin</a> | Today, 12:31</div>
+                            <div class="comment-body clearfix">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+                                <a href="./iDea _ Blogpost_files/iDea _ Blogpost.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> Reply</a>
                             </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">business</a>
+                        </div>
+
+                        <!-- comment start -->
+                        <div class="comment clearfix">
+                            <div class="comment-avatar">
+                                <img src="./iDea _ Blogpost_files/avatar.jpg" alt="avatar">
                             </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">food</a>
+                            <div class="comment-content clearfix">
+                                <h3>Comment title</h3>
+                                <div class="comment-meta">By <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">admin</a> | Today, 12:31</div>
+                                <div class="comment-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+                                    <a href="./iDea _ Blogpost_files/iDea _ Blogpost.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> Reply</a>
+                                </div>
                             </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">fashion</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">finance</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">culture</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">health</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">sports</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">life style</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">books</a>
+                        </div>
+                        <!-- comment end -->
+
+                    </div>
+                    <!-- comment end -->
+
+                    <!-- comment start -->
+                    <div class="comment clearfix">
+                        <div class="comment-avatar">
+                            <img src="./iDea _ Blogpost_files/avatar.jpg" alt="avatar">
+                        </div>
+                        <div class="comment-content clearfix">
+                            <h3>Comment title</h3>
+                            <div class="comment-meta">By <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">admin</a> | Today, 12:31</div>
+                            <div class="comment-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+                                <a href="./iDea _ Blogpost_files/iDea _ Blogpost.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> Reply</a>
                             </div>
                         </div>
                     </div>
+                    <!-- comment end -->
+
                 </div>
-            </aside>
-            <!-- sidebar end -->
+                <!-- comments end -->
+
+                <!-- comments form start -->
+                <div class="comments-form">
+                    <h2 class="title">Add your comment</h2>
+                    <form role="form" id="comment-form">
+                        <div class="form-group has-feedback">
+                            <label for="name4">Name</label>
+                            <input type="text" class="form-control" id="name4" placeholder="" name="name4" required="">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="subject4">Subject</label>
+                            <input type="text" class="form-control" id="subject4" placeholder="" name="subject4" required="">
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="message4">Message</label>
+                            <textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required=""></textarea>
+                            <i class="fa fa-envelope-o form-control-feedback"></i>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-default">
+                    </form>
+                </div>
+                <!-- comments form end -->
+
+            </div>
+            <!-- main end -->
         </div>
     </div>
 </section>
