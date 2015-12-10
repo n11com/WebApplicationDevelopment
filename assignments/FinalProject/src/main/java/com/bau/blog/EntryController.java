@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -21,6 +22,8 @@ import java.io.FileOutputStream;
 
 @Controller
 public class EntryController {
+
+    public static final String CSRF_TOKEN_SESSION_KEY = "addBlogPostCsrfToken";
 
     @Autowired
     private EntryDao entryDao;
@@ -51,7 +54,7 @@ public class EntryController {
     @RequestMapping("/secure/addBlogPost")
     public ModelAndView showEntryForm(HttpSession session){
         String csrfToken = RandomStringUtils.randomAlphanumeric(20);
-        session.setAttribute("addBlogPostCsrfToken", csrfToken);
+        session.setAttribute(CSRF_TOKEN_SESSION_KEY, csrfToken);
 
         ModelAndView mav = new ModelAndView("addBlogPost");
         mav.addObject("csrfToken", csrfToken);
@@ -73,7 +76,7 @@ public class EntryController {
             Entry entryData = new Entry();
             entryData.setTitle(title);
             entryData.setEntry(entry);
-            entryData.setImagePath(saveUploadedFile(imageFile));
+            entryData.setImagePath(saveUploadedFile(imageFile, session.getServletContext()));
 
             entryDao.addEntry(entryData, user);
             mav = new ModelAndView(new RedirectView("/", true));
@@ -86,40 +89,41 @@ public class EntryController {
     }
 
     private boolean checkCsrfToken(HttpSession session, String csrfToken){
-        String csrfTokenValue = (String) session.getAttribute("addBlogPostCsrfToken");
-        session.removeAttribute("addBlogPostCsrfToken");
+        String csrfTokenValue = (String) session.getAttribute(CSRF_TOKEN_SESSION_KEY);
+        session.removeAttribute(CSRF_TOKEN_SESSION_KEY);
         return csrfTokenValue != null && csrfTokenValue.equals(csrfToken);
     }
 
-    private String saveUploadedFile(MultipartFile imageFile) {
+    private String saveUploadedFile(MultipartFile imageFile, ServletContext servletContext) {
         String filePath = null;
 
         if (!imageFile.isEmpty()) {
-            try {
-                byte[] bytes = imageFile.getBytes();
+            String displayFolder = "/resources/uploaded/";
+            File uploadFolder = getUploadFolder(servletContext, displayFolder);
 
-                String displayFolder = "/resources/uploaded/";
-
-                File folder = new File("/Users/yusufsoysal/Development/course/workspace/assignments/FinalProject/target/blog" + displayFolder);
-                if( !folder.exists() ){
-                    folder.mkdir();
-                }
-
-                filePath = displayFolder + "/" + imageFile.getOriginalFilename();
-
-                // Create the file on server
-                File serverFile = new File(folder + "/" + imageFile.getOriginalFilename());
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                filePath = null;
-            }
+            writeUploadedFileToDisk(imageFile, uploadFolder);
+            filePath = displayFolder + "/" + imageFile.getOriginalFilename();
         }
 
         return filePath;
+    }
+
+    private void writeUploadedFileToDisk(MultipartFile imageFile, File uploadFolder) {
+        File serverFile = new File(uploadFolder, imageFile.getOriginalFilename());
+
+        try(BufferedOutputStream stream =  new BufferedOutputStream(new FileOutputStream(serverFile));){
+            stream.write(imageFile.getBytes());
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private File getUploadFolder(ServletContext servletContext, String displayFolder) {
+        File folder = new File(servletContext.getRealPath(displayFolder));
+        if( !folder.exists() ){
+            folder.mkdir();
+        }
+        return folder;
     }
 
     private boolean isValidData(String title, String entry) {

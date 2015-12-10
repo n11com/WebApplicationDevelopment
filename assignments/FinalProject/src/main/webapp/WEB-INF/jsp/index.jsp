@@ -116,7 +116,7 @@
                                     <img src="<c:url value="${entry.imagePath}" />" alt="">
                                     <div class="overlay">
                                         <div class="overlay-links">
-                                            <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html"><i class="fa fa-link"></i></a>
+                                            <a href="<c:url value="/readPost?id=${entry.id}" />"><i class="fa fa-link"></i></a>
                                             <a href="<c:url value="${entry.imagePath}" />" class="popup-img-single hoverZoomLink" title="image title"><i class="fa fa-search-plus"></i></a>
                                         </div>
                                     </div>
