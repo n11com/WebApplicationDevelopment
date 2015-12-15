@@ -45,3 +45,32 @@ Sample template: http://themeforest.net/item/dreamvilla-single-property-real-est
 - Web site should provide ways to filter property listings
 - Web site should provide a map to the property. Google Maps API may be used for this.
 - Application should contain one api that returns the list of properties
+
+
+
+## IMPORTANT UPDATE ##
+There are 5 extra features that you can implement to get more points for your final project. If you completed your final project as requested, I'll check if you completed the extra features. For each completed feature, I'll consider you submit another assignments.
+
+i.e. 
+Assignment #1 is worth %10
+Assignment #2 is worth %10
+Midterm is worth %30
+Final is worth %50
+Extra Feature #1 is worth %7
+Extra Feature #2 is worth %4
+Extra Feature #3 is worth %4
+Extra Feature #4 is worth %5
+Extra Feature #5 is worth %4
+
+Here are the extra features that you can implement:
+- #1 For each created JSP file, we create a copy of the same page and only change the content part. All JSP files contains the same header, menu and footer. If one change is to be made to the menu, all JSP files needs to be edited. To get over this problem, we generally create a template that all JSP files can inherit. So if a change is needed, we only need to change the template file. There are several frameworks that allows us to implement this feature; Apache Tiles (https://tiles.apache.org/) is one example. You are to create a template file and code each JSP file in a way that they will use the template. You are not limited to use the Apache Tiles.
+
+- #2 When you upload a file, generally you'll want to restrict the users to certain type of files. For example if you want your user to upload an image so that you can display it later, you'll have to restrict users to upload only jpg/gif/png files. One way to check if files is a correct type of file is to check the file suffix - which is a weak control since anyone can change the file suffix. Another way to do it is to check the mime type and magic bytes in a file, which will be a better (but not bullet proof) way to be sure about the files that users upload. You are to create a better validation for the uploaded files.
+
+- #3 If there is a problem in backend code and if the user types a non existing address, browsers would display a 4XX or 5XX page to the end user. You are to display a customized 4XX and 5XX page to the users
+
+- #4 As a developer; when you want your web application to be displayed in several languages, you will have to create different content for each language. The easiest way to add this kind of feature is to create different files that holds the content as key&value pairs and display them in the web pages. Java and Spring has built-in support for this. You are to create internalization files that holds the content and render the page with the content from those files. As there may be a lot of content, you don't have to internalize all content. An example that you can provide this functionality would suffice.
+
+- #5 If you're expecting a special type for request parameters but the users enters data that cannot be converted into the expected type, then a conversion problem would occur and 500 error code would return to the client. You are to handle this type of conversion problems and return an appropriate message to the client. While doing this, you cannot get the request parameter as String/Object and the convert it by yourself. 
+
+
