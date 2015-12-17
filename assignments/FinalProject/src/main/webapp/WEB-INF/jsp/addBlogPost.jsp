@@ -112,6 +112,10 @@
                         <label for="image">Blog Image</label>
                         <input type="file" name="image" id="image">
                     </div>
+                    <div class="form-group">
+                        <label for="tags">Tags (separated with comma)</label>
+                        <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags">
+                    </div>
                     <input type="hidden" name="csrfToken" value="${csrfToken}" />
                     <button type="submit" class="btn btn-default">Add Entry</button>
                 </form>

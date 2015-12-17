@@ -124,7 +124,11 @@
                     <footer class="clearfix">
                         <ul class="links pull-left">
                             <li><i class="fa fa-comment-o pr-5"></i> <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">22 comments</a> |</li>
-                            <li><i class="fa fa-tags pr-5"></i> <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">tag 1</a>, <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">tag 2</a>, <a href="http://htmlcoder.me/preview/idea/v.1.3/html/blog-post.html#">long tag 3</a> </li>
+                            <li><i class="fa fa-tags pr-5"></i>
+                                <c:forEach items="${tags}" var="tag">
+                                    <a href="<c:url value="/?tagId=${tag.id}" />">${tag.tagName}</a>
+                                </c:forEach>
+                            </li>
                         </ul>
                     </footer>
                 </article>

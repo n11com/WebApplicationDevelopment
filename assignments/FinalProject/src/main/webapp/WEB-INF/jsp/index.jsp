@@ -157,36 +157,11 @@
                         <h3 class="title">Tags</h3>
                         <div class="separator"></div>
                         <div class="tags-cloud">
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">energy</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">business</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">food</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">fashion</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">finance</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">culture</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">health</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">sports</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">life style</a>
-                            </div>
-                            <div class="tag">
-                                <a href="./iDea _ Blog_files/blog-masonry-sidebar.html">books</a>
-                            </div>
+                            <c:forEach items="${tags}" var="tag">
+                                <div class="tag">
+                                    <a href="<c:url value="/?tagId=${tag.id}" />">${tag.tagName}</a>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

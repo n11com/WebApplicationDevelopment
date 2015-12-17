@@ -40,7 +40,7 @@ public class EntryControllerTest {
         String title = "Heading";
         String content = "The Content";
 
-        controller.addEntry(title, content, null, null, session);
+        controller.addEntry(title, content, null, null, null, session);
 
         ArgumentCaptor<Entry> argumentCaptor = ArgumentCaptor.forClass(Entry.class);
         Mockito.verify(entryDao).addEntry(argumentCaptor.capture(), Mockito.any(User.class));
@@ -55,7 +55,7 @@ public class EntryControllerTest {
         String title = "";
         String content = "The Content";
 
-        controller.addEntry(title, content, null, null, session);
+        controller.addEntry(title, content, null, null, null, session);
         Mockito.verifyZeroInteractions(entryDao);
     }
 
@@ -64,7 +64,7 @@ public class EntryControllerTest {
         String title = "Heading";
         String content = "";
 
-        controller.addEntry(title, content, null, null, session);
+        controller.addEntry(title, content, null, null, null, session);
         Mockito.verifyZeroInteractions(entryDao);
     }
 

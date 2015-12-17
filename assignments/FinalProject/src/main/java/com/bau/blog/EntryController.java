@@ -7,9 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -19,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class EntryController {
@@ -27,6 +27,12 @@ public class EntryController {
 
     @Autowired
     private EntryDao entryDao;
+
+    @RequestMapping("/rest/entries")
+    @ResponseBody
+    public List<Entry> getAllEntries(){
+        return entryDao.getEntries();
+    }
 
     @RequestMapping("/readPost")
     public ModelAndView readPost(@RequestParam(name = "id", required = false) Integer entryId){
@@ -41,8 +47,10 @@ public class EntryController {
         Entry entry = entryDao.getEntry(entryId);
         if( entry == null ){
             redirectToMainPage = true;
+        } else {
+            mav.addObject("entry", entry);
+            mav.addObject("tags", entryDao.getTags(entry));
         }
-        mav.addObject("entry", entry);
 
         if( redirectToMainPage ){
             mav = new ModelAndView(new RedirectView("/", true));
@@ -66,6 +74,7 @@ public class EntryController {
     public ModelAndView addEntry(@RequestParam("title") String title,
                                  @RequestParam("entry") String entry,
                                  @RequestParam("image") MultipartFile imageFile,
+                                 @RequestParam("tags") String tags,
                                  @RequestParam("csrfToken") String csrfToken,
                                  HttpSession session){
 
@@ -73,10 +82,16 @@ public class EntryController {
         ModelAndView mav;
 
         if(checkCsrfToken(session, csrfToken) && isValidData(title, entry)){
+            String[] tagArray = StringUtils.split(tags, ",");
+            for( int i=0; i<tagArray.length; i++ ){
+                tagArray[i] = tagArray[i].trim();
+            }
+
             Entry entryData = new Entry();
             entryData.setTitle(title);
             entryData.setEntry(entry);
             entryData.setImagePath(saveUploadedFile(imageFile, session.getServletContext()));
+            entryData.setTagList(Arrays.asList(tagArray));
 
             entryDao.addEntry(entryData, user);
             mav = new ModelAndView(new RedirectView("/", true));

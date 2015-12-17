@@ -21,7 +21,7 @@ public class MainControllerTest {
         EntryDao mock = Mockito.mock(EntryDao.class);
         controller.setEntryDao(mock);
 
-        ModelAndView mav = controller.index();
+        ModelAndView mav = controller.index(0);
         assertThat(mav.getViewName(), equalTo("index"));
     }
 
@@ -35,7 +35,7 @@ public class MainControllerTest {
 
         Mockito.when(mock.getEntries()).thenReturn(entryList);
 
-        ModelAndView mav = controller.index();
+        ModelAndView mav = controller.index(0);
         Object entries = mav.getModel().get("entries");
 
         assertThat(entries, equalTo(entryList));
